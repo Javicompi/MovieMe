@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="es.jnsoft.movieme.ui.trend.TrendPagingClickListener" />
+
+        <variable
+            name="trend"
+            type="es.jnsoft.movieme.data.network.model.trend.Trend" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/trend_list_item_height"
+        app:cardCornerRadius="@dimen/trend_list_item_corner_radius"
+        android:layout_margin="8dp"
+        android:onClick="@{() -> clickListener.onClick(trend, listItemTrendPoster)}">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/list_item_trend_poster"
+            android:imageUrl="@{trend.posterPath}"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/poster"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_item_trend_title"
+            android:padding="12dp"
+            android:layout_gravity="bottom"
+            android:background="#8c000000"
+            android:textColor="#ffe3e3e3"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:trendTitle="@{trend}"
+            android:maxLines="2"
+            tools:text="Ejército de los muertos" />
+
+    </androidx.cardview.widget.CardView>
+</layout>

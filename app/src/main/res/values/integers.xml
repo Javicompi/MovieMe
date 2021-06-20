@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="trend_column_count">2</integer>
+    <integer name="search_column_count">1</integer>
+    
+</resources>

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">MovieMe</string>
+    
+    <!-- BottomNav -->
+    <string name="bottom_nav_trend">Trend</string>
+    <string name="bottom_nav_favourites">Favourites</string>
+    <string name="bottom_nav_search">Search</string>
+
+    <!-- Trend Fragment menu -->
+    <string name="trend_menu_day">Day</string>
+    <string name="trend_menu_week">Week</string>
+
+    <!-- Trend TabLayout -->
+    <string name="trend_movies">Movies</string>
+    <string name="trend_tvs">TVs</string>
+    <string name="trend_persons">Persons</string>
+
+    <string name="nothing_to_show">There\'s nothing to show</string>
+
+    <!-- List item Search -->
+    <string name="release">Release: %s</string>
+
+    <!-- Details Container -->
+    <string name="details_container_release">Release:</string>
+    <string name="details_container_language">Language:</string>
+
+</resources>

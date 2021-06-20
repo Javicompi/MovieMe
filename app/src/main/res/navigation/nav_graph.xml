@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_trend">
+
+    <fragment
+        android:id="@+id/navigation_trend"
+        android:name="es.jnsoft.movieme.ui.trend.ContainerTrendFragment"
+        android:label="@string/bottom_nav_trend"
+        tools:layout="@layout/fragment_trend_container" />
+
+    <fragment
+        android:id="@+id/navigation_favourites"
+        android:name="es.jnsoft.movieme.ui.favourites.FavouritesFragment"
+        android:label="@string/bottom_nav_favourites"
+        tools:layout="@layout/fragment_favourites" />
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="es.jnsoft.movieme.ui.search.SearchFragment"
+        android:label="@string/bottom_nav_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_navigation_search_to_elementFragment"
+            app:destination="@id/navigation_element"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_element"
+        android:name="es.jnsoft.movieme.ui.detail.movie.MovieFragment"
+        android:label="ElementFragment">
+        <argument
+            android:name="element"
+            app:argType="es.jnsoft.movieme.data.local.element.Element" />
+    </fragment>
+    <fragment
+        android:id="@+id/trendTvFragment"
+        android:name="es.jnsoft.movieme.ui.trend.TrendTvFragment"
+        android:label="TrendTvFragment">
+        <action
+            android:id="@+id/action_trendTvFragment_to_navigation_element"
+            app:destination="@id/navigation_element"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/trendMovieFragment"
+        android:name="es.jnsoft.movieme.ui.trend.TrendMovieFragment"
+        android:label="TrendMovieFragment">
+        <action
+            android:id="@+id/action_trendMovieFragment_to_navigation_element"
+            app:destination="@id/navigation_element"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_navigation_element"
+        app:destination="@id/navigation_element" />
+
+</navigation>

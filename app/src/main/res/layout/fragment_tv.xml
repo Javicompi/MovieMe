@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="element"
+            type="es.jnsoft.movieme.data.local.element.Element" />
+
+        <variable
+            name="tv"
+            type="es.jnsoft.movieme.data.network.model.tv.Tv" />
+
+        <variable
+            name="viewModel"
+            type="es.jnsoft.movieme.ui.detail.movie.MovieViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/fragment_element_scene">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/fragment_element_backdrop_height"
+            android:id="@+id/element_backdrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"
+            android:imageUrl="@{element.backdrop}"
+            android:background="@color/design_default_color_primary"
+            tools:src="@drawable/backdrop" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+</layout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- List item Trend -->
+    <dimen name="trend_list_item_height">260dp</dimen>
+    <dimen name="trend_list_item_corner_radius">8dp</dimen>
+
+    <!-- List item Search -->
+    <dimen name="search_item_imageview_height">130dp</dimen>
+    <dimen name="search_item_imageview_width">90dp</dimen>
+    <dimen name="search_item_corner_radius">6dp</dimen>
+    <dimen name="search_item_main_padding">16dp</dimen>
+    <dimen name="search_item_small_margin">8dp</dimen>
+    <dimen name="search_item_mediatype_size">24dp</dimen>
+    <dimen name="search_item_icon_margin">24dp</dimen>
+
+    <!-- Fragment Element -->
+    <dimen name="fragment_element_backdrop_height">300dp</dimen>
+    <dimen name="fragment_element_arrow_padding">16dp</dimen>
+    <dimen name="fragment_element_title_margin">16dp</dimen>
+    <dimen name="fragment_element_title_size">24sp</dimen>
+    <dimen name="fragment_element_cardview_margin">24dp</dimen>
+    <dimen name="fragment_element_fab_margin">16dp</dimen>
+
+    <!-- Details Container -->
+    <dimen name="details_container_padding">24dp</dimen>
+    <dimen name="details_container_guideline_margin">12dp</dimen>
+    
+</resources>
