@@ -1,2 +1,2 @@
 # MovieMe
-API: https://www.themoviedb.org/settings/api
+API key: https://www.themoviedb.org/settings/api
