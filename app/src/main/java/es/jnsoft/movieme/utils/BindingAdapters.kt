@@ -9,6 +9,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import es.jnsoft.movieme.R
+import es.jnsoft.movieme.data.network.model.movie.Movie.Genre
 import es.jnsoft.movieme.data.network.model.search.Search
 import es.jnsoft.movieme.data.network.model.trend.Trend
 import es.jnsoft.movieme.data.network.model.trend.TrendMediaType
@@ -130,6 +131,20 @@ object BindingAdapters {
                     )
                 )
             }
+        }
+    }
+
+    @BindingAdapter("android:genres")
+    @JvmStatic
+    fun TextView.setGenres(genres: List<Genre>?) {
+        text = if (genres.isNullOrEmpty()) {
+            ""
+        } else {
+            val listOfValues = genres.map {
+                it.name.lowercase()
+            }
+            val result = listOfValues.joinToString(", ")
+            result.replaceFirstChar { it.uppercase() }
         }
     }
 }

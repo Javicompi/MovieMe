@@ -23,5 +23,7 @@
     <!-- Details Container -->
     <string name="details_container_release">Release:</string>
     <string name="details_container_language">Language:</string>
+    <string name="details_container_genres">Genre/s:</string>
+    <string name="details_container_website">Website:</string>
 
 </resources>
