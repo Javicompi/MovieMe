@@ -1,7 +1,6 @@
 package es.jnsoft.movieme.ui.detail.movie
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,7 +70,7 @@ class MovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
        setupBindings()
-        viewModel.elementId.value = args.element.id
+        viewModel.elementId.value = args.element.movieDbId
     }
 
     private fun setupBindings() {

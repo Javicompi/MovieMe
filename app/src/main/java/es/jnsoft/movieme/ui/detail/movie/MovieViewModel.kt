@@ -19,23 +19,26 @@ class MovieViewModel @Inject constructor(
 
     val showSnackBar = SingleLiveEvent<String>()
 
-    val elementId = MutableLiveData(0L)
+    val elementId = MutableLiveData<Long>()
 
     val element = elementId.switchMap { id ->
         liveData {
-            emitSource(repository.getElement(id))
+            emitSource(repository.getElement("movie$id"))
         }
     }
 
     val movie = elementId.switchMap { id ->
         liveData {
-            emitSource(repository.getMovie(id))
+            id?.let {
+                emitSource(repository.getMovie(id))
+            }
+            //emitSource(repository.getMovie(data.movieDbId))
         }
     }
 
     val isElementInDb = element.switchMap { data ->
         liveData {
-            emit(data != null && data.id > 0L)
+            emit(data != null && data.movieDbId > 0L)
         }
     }
 
