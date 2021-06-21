@@ -46,7 +46,8 @@ data class Movie(
 fun Movie.toElement(): Element {
     return Element(
         backdrop = backdropPath ?: "",
-        id = id,
+        id = "movie$id",
+        movieDbId = id,
         mediaType = "movie",
         overview = overview ?: "",
         poster = posterPath ?: "",

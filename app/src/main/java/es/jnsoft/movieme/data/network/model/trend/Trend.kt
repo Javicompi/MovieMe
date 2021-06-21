@@ -43,7 +43,8 @@ data class Trend(
 fun Trend.toElement(): Element {
     return Element(
         backdrop = backdropPath ?: "",
-        id = id.toLong(),
+        id = mediaType + id.toLong(),
+        movieDbId = id.toLong(),
         mediaType = mediaType,
         overview = overview ?: "",
         poster = posterPath ?: "",

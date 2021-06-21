@@ -11,7 +11,8 @@ import kotlinx.parcelize.Parcelize
 data class Element(
     val backdrop: String,
     @PrimaryKey
-    val id: Long,
+    val id: String,
+    val movieDbId: Long,
     val mediaType: String,
     val overview: String,
     val poster: String,
@@ -21,7 +22,7 @@ data class Element(
 fun Element.toMovie(): Movie {
     return Movie(
         backdropPath = backdrop,
-        id = id,
+        id = movieDbId,
         overview = overview,
         posterPath = poster,
         title = title

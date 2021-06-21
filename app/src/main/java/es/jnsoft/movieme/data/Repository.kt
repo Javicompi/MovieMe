@@ -58,7 +58,7 @@ class Repository @Inject constructor(
         return@withContext localDataSource.getElements()
     }
 
-    suspend fun getElement(id: Long): LiveData<Element> = withContext(Dispatchers.IO) {
+    suspend fun getElement(id: String): LiveData<Element> = withContext(Dispatchers.IO) {
         return@withContext localDataSource.getElement(id)
     }
 

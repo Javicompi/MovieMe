@@ -9,7 +9,7 @@ interface LocalDataSource {
 
     suspend fun getElements(): LiveData<List<Element>>
 
-    suspend fun getElement(id: Long): LiveData<Element>
+    suspend fun getElement(id: String): LiveData<Element>
 
     suspend fun insertElement(element: Element)
 
