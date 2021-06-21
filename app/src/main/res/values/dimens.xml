@@ -24,7 +24,7 @@
 
     <!-- Details Container -->
     <dimen name="details_container_padding">24dp</dimen>
-    <dimen name="details_container_text_margin">12dp</dimen>
+    <dimen name="details_container_text_width">12dp</dimen>
     <dimen name="details_container_genre_tv_size">150dp</dimen>
     
 </resources>

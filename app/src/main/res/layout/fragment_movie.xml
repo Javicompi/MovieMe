@@ -81,9 +81,31 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/container_details_release_tv"
+                android:id="@+id/container_details_or_title_tv"
                 app:layout_constraintEnd_toStartOf="@id/container_details_guideline"
                 app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/details_container_or_title"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="@dimen/details_container_genre_tv_size"
+                android:layout_height="wrap_content"
+                android:id="@+id/container_details_or_title"
+                app:layout_constraintStart_toStartOf="@id/container_details_guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/details_container_text_width"
+                android:text="@{movie.originalTitle}"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                tools:text="Army of the Dead"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/container_details_release_tv"
+                app:layout_constraintEnd_toStartOf="@id/container_details_guideline"
+                app:layout_constraintTop_toBottomOf="@id/container_details_or_title"
+                android:layout_marginTop="@dimen/details_container_text_width"
                 android:text="@string/details_container_release"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textStyle="bold" />
@@ -93,8 +115,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/container_details_release"
                 app:layout_constraintStart_toStartOf="@id/container_details_guideline"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="@dimen/details_container_text_margin"
+                app:layout_constraintTop_toTopOf="@id/container_details_release_tv"
+                android:layout_marginStart="@dimen/details_container_text_width"
                 android:text="@{movie.releaseDate}"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 tools:text="2021-05-14"/>
@@ -105,7 +127,7 @@
                 android:id="@+id/container_details_language_tv"
                 app:layout_constraintEnd_toStartOf="@id/container_details_guideline"
                 app:layout_constraintTop_toBottomOf="@id/container_details_release"
-                android:layout_marginTop="@dimen/details_container_text_margin"
+                android:layout_marginTop="@dimen/details_container_text_width"
                 android:text="@string/details_container_language"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textStyle="bold" />
@@ -116,7 +138,7 @@
                 android:id="@+id/container_details_language"
                 app:layout_constraintStart_toStartOf="@id/container_details_guideline"
                 app:layout_constraintTop_toTopOf="@id/container_details_language_tv"
-                android:layout_marginStart="@dimen/details_container_text_margin"
+                android:layout_marginStart="@dimen/details_container_text_width"
                 android:text="@{movie.originalLanguage}"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 tools:text="en"/>
@@ -127,7 +149,7 @@
                 android:id="@+id/container_details_genres_tv"
                 app:layout_constraintEnd_toStartOf="@id/container_details_guideline"
                 app:layout_constraintTop_toBottomOf="@id/container_details_language"
-                android:layout_marginTop="@dimen/details_container_text_margin"
+                android:layout_marginTop="@dimen/details_container_text_width"
                 android:text="@string/details_container_genres"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textStyle="bold"/>
@@ -138,7 +160,7 @@
                 android:id="@+id/container_details_genres"
                 app:layout_constraintStart_toStartOf="@id/container_details_guideline"
                 app:layout_constraintTop_toTopOf="@id/container_details_genres_tv"
-                android:layout_marginStart="@dimen/details_container_text_margin"
+                android:layout_marginStart="@dimen/details_container_text_width"
                 android:genres="@{movie.genres}"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:maxLines="3"
@@ -150,23 +172,47 @@
                 android:id="@+id/container_details_website_tv"
                 app:layout_constraintEnd_toStartOf="@id/container_details_guideline"
                 app:layout_constraintTop_toBottomOf="@id/container_details_genres"
-                android:layout_marginTop="@dimen/details_container_text_margin"
+                android:layout_marginTop="@dimen/details_container_text_width"
                 android:text="@string/details_container_website"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:textStyle="bold"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/container_details_website"
                 app:layout_constraintStart_toStartOf="@id/container_details_guideline"
                 app:layout_constraintTop_toTopOf="@id/container_details_website_tv"
-                android:layout_marginStart="@dimen/details_container_text_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/details_container_text_width"
                 android:text="@{movie.homepage}"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:autoLink="web"
                 android:clickable="true"
                 tools:text="https://www.netflix.com/title/81046394"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/container_details_overview_tv"
+                app:layout_constraintEnd_toStartOf="@id/container_details_guideline"
+                app:layout_constraintTop_toBottomOf="@id/container_details_website"
+                android:layout_marginTop="@dimen/details_container_text_width"
+                android:text="@string/details_container_overview"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/container_details_overview"
+                app:layout_constraintStart_toStartOf="@id/container_details_guideline"
+                app:layout_constraintTop_toTopOf="@id/container_details_overview_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/details_container_text_width"
+                android:text="@{movie.overview}"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                tools:text="@string/details_container_overview_mock"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
