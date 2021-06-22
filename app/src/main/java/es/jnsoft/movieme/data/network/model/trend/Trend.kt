@@ -46,16 +46,14 @@ fun Trend.toElement(): Element {
         id = mediaType + id.toLong(),
         movieDbId = id.toLong(),
         mediaType = mediaType,
+        language = originalLanguage?.uppercase() ?: "",
         overview = overview ?: "",
         poster = posterPath ?: "",
+        releaseDate = releaseDate ?: "",
         title = if (!title.isNullOrEmpty()) {
             title
-        } else if (!originalTitle.isNullOrEmpty()) {
-            originalTitle
         } else if (!name.isNullOrEmpty()) {
             name
-        } else if (!originalName.isNullOrEmpty()) {
-            originalName
         } else {
             ""
         }

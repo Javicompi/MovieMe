@@ -47,10 +47,12 @@ fun Movie.toElement(): Element {
     return Element(
         backdrop = backdropPath ?: "",
         id = "movie$id",
+        language = originalLanguage?.uppercase() ?: "",
         movieDbId = id,
         mediaType = "movie",
         overview = overview ?: "",
         poster = posterPath ?: "",
+        releaseDate = releaseDate ?: "",
         title = title ?: ""
     )
 }

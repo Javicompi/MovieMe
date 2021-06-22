@@ -117,7 +117,7 @@
                 app:layout_constraintStart_toStartOf="@id/container_details_guideline"
                 app:layout_constraintTop_toTopOf="@id/container_details_release_tv"
                 android:layout_marginStart="@dimen/details_container_text_width"
-                android:text="@{movie.releaseDate}"
+                android:text="@{element.releaseDate}"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 tools:text="2021-05-14"/>
 
@@ -139,7 +139,7 @@
                 app:layout_constraintStart_toStartOf="@id/container_details_guideline"
                 app:layout_constraintTop_toTopOf="@id/container_details_language_tv"
                 android:layout_marginStart="@dimen/details_container_text_width"
-                android:text="@{movie.originalLanguage}"
+                android:text="@{element.language}"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 tools:text="en"/>
 

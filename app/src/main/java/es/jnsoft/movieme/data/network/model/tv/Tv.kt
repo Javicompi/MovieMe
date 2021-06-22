@@ -3,6 +3,7 @@ package es.jnsoft.movieme.data.network.model.tv
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import es.jnsoft.movieme.data.local.element.Element
 
 @JsonClass(generateAdapter = true)
 data class Tv(
@@ -74,5 +75,19 @@ data class Tv(
         @Json(name = "iso_639_1")
         val iso6391: String,
         val name: String
+    )
+}
+
+fun Tv.toElement(): Element {
+    return Element(
+        backdrop = backdropPath ?: "",
+        id = "tv$id",
+        language = originalLanguage?.uppercase() ?: "",
+        movieDbId = id,
+        mediaType = "tv",
+        overview = overview ?: "",
+        poster = posterPath ?: "",
+        releaseDate = firstAirDate ?: "",
+        title = name ?: ""
     )
 }
