@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     private fun setToolbarVisibility(navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.navigation_element -> {
+                R.id.navigation_movie -> {
                     actionBar.hide()
                     navigationView.visibility = View.GONE
                 }
