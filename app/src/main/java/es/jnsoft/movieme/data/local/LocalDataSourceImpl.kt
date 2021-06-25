@@ -20,6 +20,10 @@ class LocalDataSourceImpl @Inject constructor(
         return elementDao.getElement(id)
     }
 
+    override suspend fun getElementId(id: String): LiveData<Boolean> {
+        return elementDao.getElementId(id)
+    }
+
     override suspend fun insertElement(element: Element) {
         elementDao.insertElement(element)
     }

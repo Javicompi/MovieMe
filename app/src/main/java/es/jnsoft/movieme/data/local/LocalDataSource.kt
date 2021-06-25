@@ -11,6 +11,8 @@ interface LocalDataSource {
 
     suspend fun getElement(id: String): LiveData<Element>
 
+    suspend fun getElementId(id: String): LiveData<Boolean>
+
     suspend fun insertElement(element: Element)
 
     suspend fun deleteElement(element: Element)

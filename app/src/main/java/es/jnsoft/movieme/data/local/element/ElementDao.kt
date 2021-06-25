@@ -13,6 +13,9 @@ interface ElementDao {
     @Query("SELECT * FROM element WHERE id = :id LIMIT 1")
     fun getElement(id: String): LiveData<Element>
 
+    @Query("SELECT EXISTS (SELECT * FROM element WHERE id = :id LIMIT 1)")
+    fun getElementId(id: String): LiveData<Boolean>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertElement(element: Element)
 
