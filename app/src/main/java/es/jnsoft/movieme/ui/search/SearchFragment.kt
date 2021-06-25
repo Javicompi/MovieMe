@@ -39,7 +39,7 @@ class SearchFragment : Fragment() {
         val adapter = SearchAdapter(SearchClickListener { search, poster ->
             Log.d("SearchFragment", "Id: ${search.id}")
             val extras = FragmentNavigatorExtras(poster to search.posterPath!!)
-            val action = SearchFragmentDirections.actionNavigationSearchToElementFragment(
+            val action = SearchFragmentDirections.actionFragmentSearchToFragmentMovie(
                 element = search.toElement()
             )
             findNavController().navigate(action, extras)

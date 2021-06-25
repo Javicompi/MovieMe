@@ -1,7 +1,6 @@
 package es.jnsoft.movieme.ui.trend
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +12,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import es.jnsoft.movieme.NavGraphDirections
 import es.jnsoft.movieme.R
 import es.jnsoft.movieme.data.network.model.trend.TrendTimeWindow
 import es.jnsoft.movieme.data.network.model.trend.toElement
 import es.jnsoft.movieme.databinding.FragmentTvTrendBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
@@ -41,10 +38,10 @@ class TrendTvFragment : BaseTrendFragment() {
         binding.tvsTrendRecyclerview.layoutManager = GridLayoutManager(activity, columnCount)
 
         val adapter = TrendPagingAdapter(TrendPagingClickListener { trend, poster ->
-            Log.d("TrendTvFragment", trend.title ?: trend.id.toString())
             val extras = FragmentNavigatorExtras(poster to trend.posterPath!!)
-            val action =
-                NavGraphDirections.actionGlobalNavigationElement(element = trend.toElement())
+            val action = ContainerTrendFragmentDirections.actionFragmentTrendToFragmentMovie(
+                element = trend.toElement()
+            )
             findNavController().navigate(action, extras)
         })
 

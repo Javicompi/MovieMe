@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import es.jnsoft.movieme.NavGraphDirections
 import es.jnsoft.movieme.R
 import es.jnsoft.movieme.databinding.FragmentFavouritesBinding
 
@@ -33,7 +32,9 @@ class FavouritesFragment : Fragment() {
         binding.favouritesRecyclerview.layoutManager = GridLayoutManager(activity, columnCount)
         val adapter = FavouritesAdapter(FavouriteClickListener {element, poster ->
             val extras = FragmentNavigatorExtras(poster to element.poster)
-            val action = NavGraphDirections.actionGlobalNavigationElement(element)
+            val action = FavouritesFragmentDirections.actionFragmentFavouritesToFragmentMovie(
+                element = element
+            )
             findNavController().navigate(action, extras)
         })
 
