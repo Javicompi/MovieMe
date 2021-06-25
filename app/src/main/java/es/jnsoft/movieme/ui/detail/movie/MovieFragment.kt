@@ -14,9 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import es.jnsoft.movieme.data.Result
 import es.jnsoft.movieme.databinding.FragmentMovieBinding
 import es.jnsoft.movieme.utils.BindingAdapters.setIcon
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class MovieFragment : Fragment() {
 
@@ -75,7 +73,6 @@ class MovieFragment : Fragment() {
 
     private fun setupBindings() {
         binding.apply {
-            element = args.element
             elementPoster.transitionName = args.element.poster
             elementBackIcon.setOnClickListener {
                 findNavController().popBackStack()

@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="element"
-            type="es.jnsoft.movieme.data.local.element.Element" />
-
-        <variable
             name="movie"
             type="es.jnsoft.movieme.data.network.model.movie.Movie" />
 
@@ -32,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:scaleType="centerCrop"
-            android:imageUrl="@{element.backdrop}"
+            android:imageUrl="@{movie.backdropPath}"
             android:background="@color/design_default_color_primary"
             tools:src="@drawable/backdrop" />
 
@@ -56,7 +52,7 @@
             android:layout_marginBottom="@dimen/fragment_element_title_margin"
             android:textColor="?android:attr/textColorPrimaryInverse"
             android:textSize="@dimen/fragment_element_title_size"
-            android:text="@{element.title}"
+            android:text="@{movie.title}"
             android:maxLines="1"
             tools:text="Ejército de los muertos" />
 
@@ -117,7 +113,7 @@
                 app:layout_constraintStart_toStartOf="@id/container_details_guideline"
                 app:layout_constraintTop_toTopOf="@id/container_details_release_tv"
                 android:layout_marginStart="@dimen/details_container_text_width"
-                android:text="@{element.releaseDate}"
+                android:text="@{movie.releaseDate}"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 tools:text="2021-05-14"/>
 
@@ -139,7 +135,7 @@
                 app:layout_constraintStart_toStartOf="@id/container_details_guideline"
                 app:layout_constraintTop_toTopOf="@id/container_details_language_tv"
                 android:layout_marginStart="@dimen/details_container_text_width"
-                android:text="@{element.language}"
+                android:text="@{movie.originalLanguage}"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 tools:text="en"/>
 
@@ -234,7 +230,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/element_poster"
                 android:scaleType="centerCrop"
-                android:imageUrl="@{element.poster}"
+                android:imageUrl="@{movie.posterPath}"
                 tools:src="@drawable/poster" />
 
         </androidx.cardview.widget.CardView>

@@ -6,39 +6,27 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import es.jnsoft.movieme.data.Repository
 import es.jnsoft.movieme.data.Result
 import es.jnsoft.movieme.data.network.model.movie.toElement
-import es.jnsoft.movieme.utils.SingleLiveEvent
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@ExperimentalCoroutinesApi
 @HiltViewModel
 class MovieViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 
-    val showSnackBar = SingleLiveEvent<String>()
-
     val elementId = MutableLiveData<Long>()
-
-    val element = elementId.switchMap { id ->
-        liveData {
-            emitSource(repository.getElement("movie$id"))
-        }
-    }
 
     val movie = elementId.switchMap { id ->
         liveData {
             id?.let {
                 emitSource(repository.getMovie(id))
             }
-            //emitSource(repository.getMovie(data.movieDbId))
         }
     }
 
-    val isElementInDb = element.switchMap { data ->
+    val isElementInDb = elementId.switchMap { id ->
         liveData {
-            emit(data != null && data.movieDbId > 0L)
+            emitSource(repository.isElementSaved(id))
         }
     }
 
