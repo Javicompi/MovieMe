@@ -24,6 +24,7 @@
             android:clipToPadding="false"
             android:visibility="gone"
             tools:spanCount="2"
+            tools:listitem="@layout/list_item_favourite"
             tools:visibility="visible"/>
 
         <TextView
