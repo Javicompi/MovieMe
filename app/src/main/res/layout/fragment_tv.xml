@@ -15,7 +15,7 @@
 
         <variable
             name="viewModel"
-            type="es.jnsoft.movieme.ui.detail.movie.MovieViewModel" />
+            type="es.jnsoft.movieme.ui.detail.tv.TvViewModel" />
 
     </data>
 
