@@ -1,6 +1,7 @@
 package es.jnsoft.movieme.data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.liveData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -15,10 +16,6 @@ import es.jnsoft.movieme.data.network.model.trend.TrendMediaType
 import es.jnsoft.movieme.data.network.model.trend.TrendTimeWindow
 import es.jnsoft.movieme.data.network.model.tv.Tv
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -62,18 +59,32 @@ class Repository @Inject constructor(
         return@withContext localDataSource.getElement(id)
     }
 
-    suspend fun findMovie(id: Long): Result<Movie> {
-        return networkDataSource.getMovie(movieId = id)
-    }
-
-    suspend fun findTv(id: Long): Result<Tv> {
-        return networkDataSource.getTv(tvId = id)
-    }
-
     suspend fun getMovie(id: Long): LiveData<Result<Movie>> = withContext(Dispatchers.IO) {
         return@withContext liveData {
-            emit(networkDataSource.getMovie(id))
+            val result = MediatorLiveData<Result<Movie>>()
+            val dbSource = localDataSource.getElement("movie$id")
+            val networkSource = networkDataSource.getMovie(id)
+            result.addSource(dbSource) { data ->
+                result.removeSource(dbSource)
+                if (data != null && data.id.isNotEmpty()) {
+                    result.value = Result.Success(data.toMovie())
+                }
+                if (networkSource.succeeded) {
+                    result.value = networkSource
+                }
+            }
+            emitSource(result)
         }
+    }
+
+    suspend fun getTv(id: Long): LiveData<Result<Tv>> = withContext(Dispatchers.IO) {
+        return@withContext liveData {
+            emit(networkDataSource.getTv(id))
+        }
+    }
+
+    suspend fun isElementSaved(id: Long): LiveData<Boolean> = withContext(Dispatchers.IO) {
+        return@withContext localDataSource.getElementId("movie$id")
     }
 
     suspend fun saveElement(element: Element) = withContext(Dispatchers.IO) {
