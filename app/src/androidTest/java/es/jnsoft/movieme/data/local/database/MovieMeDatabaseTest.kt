@@ -1,12 +1,17 @@
 package es.jnsoft.movieme.data.local.database
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import es.jnsoft.movieme.data.local.element.Element
+import es.jnsoft.movieme.getOrAwaitValue
 import kotlinx.coroutines.runBlocking
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.*
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -14,6 +19,9 @@ import org.junit.runner.RunWith
 class MovieMeDatabaseTest {
 
     private lateinit var database: MovieMeDatabase
+
+    @get:Rule
+    var instantExecutorRule = InstantTaskExecutorRule()
 
     @Before
     fun setupDatabase() {
@@ -30,60 +38,47 @@ class MovieMeDatabaseTest {
 
     @Test
     fun insertElement_getElement() = runBlocking {
-        val element = Element(
-            backdrop = "",
-            id = 17,
-            mediaType = "movie",
-            overview = "Whatever",
-            poster = "",
-            title = "Nothing"
-        )
+        val element = createElement(17)
         database.elementDao().insertElement(element)
-        val saved = database.elementDao().getElement(element.id)
-        assert(saved.id == element.id)
+        val saved = database.elementDao().getElement(element.id).getOrAwaitValue()
+        assertThat(saved, notNullValue())
+        assertThat(saved.movieDbId, `is`(17))
     }
 
     @Test
     fun getAllElements() = runBlocking {
-        val element1 = Element(
-            backdrop = "",
-            id = 1,
-            mediaType = "movie",
-            overview = "Whatever",
-            poster = "",
-            title = "Nothing"
-        )
+        val element1 = createElement(1)
+        val element2 = createElement(2)
         database.elementDao().insertElement(element1)
-        val element2 = Element(
-            backdrop = "",
-            id = 2,
-            mediaType = "movie",
-            overview = "Whatever",
-            poster = "",
-            title = "Nothing"
-        )
         database.elementDao().insertElement(element2)
-        val elements = database.elementDao().getAll()
-        assert(elements.size == 2)
-        assert(elements[0].id == 1L)
-        assert(elements[1].id == 2L)
+        val elements = database.elementDao().getAll().getOrAwaitValue()
+        assertThat(elements.size, `is`(2))
+        assertThat(elements[0].movieDbId, `is`(1))
+        assertThat(elements[1].movieDbId, `is`(2))
     }
 
     @Test
     fun deleteElement() = runBlocking {
-        val element = Element(
+        val element = createElement(17)
+        database.elementDao().insertElement(element)
+        val saved = database.elementDao().getElement(element.id).getOrAwaitValue()
+        assertThat(saved.movieDbId, `is`(17))
+        database.elementDao().deleteElement(element)
+        val elements = database.elementDao().getAll().getOrAwaitValue()
+        assertThat(elements, empty())
+    }
+
+    fun createElement(id: Long): Element {
+        return Element(
             backdrop = "",
-            id = 17,
+            id = "movie$id",
+            language = "en",
             mediaType = "movie",
+            movieDbId = id,
             overview = "Whatever",
             poster = "",
+            releaseDate = "2020-10-17",
             title = "Nothing"
         )
-        database.elementDao().insertElement(element)
-        val saved = database.elementDao().getElement(element.id)
-        assert(saved.id == element.id)
-        database.elementDao().deleteElement(element)
-        val elements = database.elementDao().getAll()
-        assert(elements.isEmpty())
     }
 }
