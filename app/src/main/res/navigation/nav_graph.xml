@@ -17,6 +17,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_fragment_trend_to_fragment_tv"
+            app:destination="@id/navigation_tv"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -30,8 +37,14 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpToInclusive="false" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_fragment_favourites_to_fragment_tv"
+            app:destination="@id/navigation_tv"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -45,42 +58,32 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpToInclusive="false" />
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_fragment_search_to_fragment_tv"
+            app:destination="@id/navigation_tv"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/navigation_movie"
         android:name="es.jnsoft.movieme.ui.detail.movie.MovieFragment"
-        android:label="ElementFragment">
+        android:label="ElementFragment"
+        tools:layout="@layout/fragment_movie">
         <argument
             android:name="element"
             app:argType="es.jnsoft.movieme.data.local.element.Element" />
     </fragment>
     <fragment
-        android:id="@+id/navigation_trend_tv"
-        android:name="es.jnsoft.movieme.ui.trend.TrendTvFragment"
-        android:label="TrendTvFragment">
-        <action
-            android:id="@+id/action_fragment_trend_tv_to_fragment_movie"
-            app:destination="@id/navigation_movie"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpToInclusive="false" />
-    </fragment>
-    <fragment
-        android:id="@+id/navigation_trend_movie"
-        android:name="es.jnsoft.movieme.ui.trend.TrendMovieFragment"
-        android:label="TrendMovieFragment">
-        <action
-            android:id="@+id/action_fragment_trend_movie_to_fragment_movie"
-            app:destination="@id/navigation_movie"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpToInclusive="false" />
+        android:id="@+id/navigation_tv"
+        android:name="es.jnsoft.movieme.ui.detail.tv.TvFragment"
+        android:label="TvFragment"
+        tools:layout="@layout/fragment_tv">
+        <argument
+            android:name="element"
+            app:argType="es.jnsoft.movieme.data.local.element.Element" />
     </fragment>
 
 </navigation>
