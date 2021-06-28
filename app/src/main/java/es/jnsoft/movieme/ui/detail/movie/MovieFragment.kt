@@ -13,22 +13,17 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import es.jnsoft.movieme.data.Result
 import es.jnsoft.movieme.databinding.FragmentMovieBinding
+import es.jnsoft.movieme.ui.detail.BaseDetailFragment
 import es.jnsoft.movieme.utils.BindingAdapters.setIcon
 
 @AndroidEntryPoint
-class MovieFragment : Fragment() {
+class MovieFragment : BaseDetailFragment() {
 
     private val args: MovieFragmentArgs by navArgs()
 
     private val viewModel: MovieViewModel by viewModels()
 
     private lateinit var binding: FragmentMovieBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        sharedElementEnterTransition =
-            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -71,7 +66,7 @@ class MovieFragment : Fragment() {
         viewModel.elementId.value = args.element.movieDbId
     }
 
-    private fun setupBindings() {
+    override fun setupBindings() {
         binding.apply {
             elementPoster.transitionName = args.element.poster
             elementBackIcon.setOnClickListener {
@@ -81,9 +76,5 @@ class MovieFragment : Fragment() {
                 viewModel?.onFabClick()
             }
         }
-    }
-
-    private fun showSnackBar(error: String) {
-        Snackbar.make(this.requireView(), error, Snackbar.LENGTH_LONG).show()
     }
 }
