@@ -1,21 +1,17 @@
 package es.jnsoft.movieme.ui.trend
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.FragmentNavigatorExtras
-import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import es.jnsoft.movieme.R
 import es.jnsoft.movieme.data.network.model.trend.TrendTimeWindow
-import es.jnsoft.movieme.data.network.model.trend.toElement
 import es.jnsoft.movieme.databinding.FragmentMovieTrendBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
@@ -39,11 +35,7 @@ class TrendMovieFragment : BaseTrendFragment() {
         binding.moviesTrendRecyclerview.layoutManager = GridLayoutManager(activity, columnCount)
 
         val adapter = TrendPagingAdapter(TrendPagingClickListener { trend, poster ->
-            val extras = FragmentNavigatorExtras(poster to trend.posterPath!!)
-            val action = ContainerTrendFragmentDirections.actionFragmentTrendToFragmentMovie(
-                element = trend.toElement()
-            )
-            findNavController().navigate(action, extras)
+            navigateToDetail(trend, poster)
         })
 
         binding.moviesTrendRecyclerview.adapter = adapter

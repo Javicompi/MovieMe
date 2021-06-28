@@ -4,11 +4,17 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import es.jnsoft.movieme.R
+import es.jnsoft.movieme.data.network.model.trend.Trend
+import es.jnsoft.movieme.data.network.model.trend.TrendMediaType
 import es.jnsoft.movieme.data.network.model.trend.TrendTimeWindow
+import es.jnsoft.movieme.data.network.model.trend.toElement
 
 abstract class BaseTrendFragment : Fragment() {
 
@@ -43,5 +49,19 @@ abstract class BaseTrendFragment : Fragment() {
         Snackbar.make(bottomNav, errorMessage, Snackbar.LENGTH_LONG).apply {
             anchorView = bottomNav
         }.show()
+    }
+
+    fun navigateToDetail(trend: Trend, poster: ImageView) {
+        val extras = FragmentNavigatorExtras(poster to trend.posterPath!!)
+        val action = if (trend.mediaType == TrendMediaType.MOVIE.value) {
+            ContainerTrendFragmentDirections.actionFragmentTrendToFragmentMovie(
+                element = trend.toElement()
+            )
+        } else {
+            ContainerTrendFragmentDirections.actionFragmentTrendToFragmentTv(
+                element = trend.toElement()
+            )
+        }
+        findNavController().navigate(action, extras)
     }
 }

@@ -13,6 +13,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import es.jnsoft.movieme.R
+import es.jnsoft.movieme.data.network.model.trend.TrendMediaType
 import es.jnsoft.movieme.data.network.model.trend.TrendTimeWindow
 import es.jnsoft.movieme.data.network.model.trend.toElement
 import es.jnsoft.movieme.databinding.FragmentTvTrendBinding
@@ -38,11 +39,7 @@ class TrendTvFragment : BaseTrendFragment() {
         binding.tvsTrendRecyclerview.layoutManager = GridLayoutManager(activity, columnCount)
 
         val adapter = TrendPagingAdapter(TrendPagingClickListener { trend, poster ->
-            val extras = FragmentNavigatorExtras(poster to trend.posterPath!!)
-            val action = ContainerTrendFragmentDirections.actionFragmentTrendToFragmentMovie(
-                element = trend.toElement()
-            )
-            findNavController().navigate(action, extras)
+            navigateToDetail(trend, poster)
         })
 
         binding.tvsTrendRecyclerview.adapter = adapter
