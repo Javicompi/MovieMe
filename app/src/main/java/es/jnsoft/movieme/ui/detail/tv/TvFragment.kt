@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import es.jnsoft.movieme.data.Result
 import es.jnsoft.movieme.databinding.FragmentTvBinding
 import es.jnsoft.movieme.ui.detail.BaseDetailFragment
+import es.jnsoft.movieme.utils.BindingAdapters.setIcon
 
 @AndroidEntryPoint
 class TvFragment : BaseDetailFragment() {
@@ -40,27 +42,33 @@ class TvFragment : BaseDetailFragment() {
         })
 
         viewModel.isElementInDb.observe(viewLifecycleOwner, { isSaved ->
-            TODO("Not yet implemented")
+            binding.tvFab.setIcon(isSaved)
         })
 
         viewModel.showFab.observe(viewLifecycleOwner, { showFab ->
-            TODO("Not yet implemented")
+            if (showFab) {
+                binding.tvFab.visibility = View.VISIBLE
+            } else {
+                binding.tvFab.visibility = View.GONE
+            }
         })
+
+        viewModel.elementId.value = args.element.movieDbId
+
+        setupBindings()
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupBindings()
-        viewModel.elementId.value = args.element.movieDbId
-    }
-
     override fun setupBindings() {
-        TODO("Not yet implemented")
         binding.apply {
-            elementBackdrop.transitionName = args.element.poster
-
+            tvPoster.transitionName = args.element.poster
+            tvBackIcon.setOnClickListener {
+                findNavController().popBackStack()
+            }
+            tvFab.setOnClickListener {
+                viewModel?.onFabClick()
+            }
         }
     }
 }
