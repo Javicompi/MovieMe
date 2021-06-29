@@ -54,13 +54,11 @@ class MovieFragment : BaseDetailFragment() {
             }
         })
 
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-       setupBindings()
         viewModel.elementId.value = args.element.movieDbId
+
+        setupBindings()
+
+        return binding.root
     }
 
     override fun setupBindings() {
