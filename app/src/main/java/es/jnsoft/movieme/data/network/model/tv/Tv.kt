@@ -4,11 +4,14 @@ package es.jnsoft.movieme.data.network.model.tv
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import es.jnsoft.movieme.data.local.element.Element
+import es.jnsoft.movieme.data.network.model.common.Genre
 
 @JsonClass(generateAdapter = true)
 data class Tv(
     @Json(name = "backdrop_path")
     val backdropPath: String?,
+    @Json(name = "created_by")
+    val createdBys: List<CreatedBy>?,
     @Json(name = "episode_run_time")
     val episodeRunTime: List<Int>?,
     @Json(name = "first_air_date")
@@ -48,24 +51,29 @@ data class Tv(
     val voteCount: Int?
 ) {
     @JsonClass(generateAdapter = true)
-    data class Genre(
-        val id: Int,
-        val name: String
+    data class CreatedBy(
+        val id: Int?,
+        @Json(name = "credit_id")
+        val creditId: String?,
+        val name: String,
+        val gender: Int?,
+        @Json(name = "profile_path")
+        val profilePath: String?
     )
 
     @JsonClass(generateAdapter = true)
     data class Season(
         @Json(name = "air_date")
-        val airDate: String,
+        val airDate: String?,
         @Json(name = "episode_count")
-        val episodeCount: Int,
-        val id: Int,
-        val name: String,
-        val overview: String,
+        val episodeCount: Int?,
+        val id: Int?,
+        val name: String?,
+        val overview: String?,
         @Json(name = "poster_path")
-        val posterPath: String,
+        val posterPath: String?,
         @Json(name = "season_number")
-        val seasonNumber: Int
+        val seasonNumber: Int?
     )
 
     @JsonClass(generateAdapter = true)

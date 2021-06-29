@@ -4,6 +4,7 @@ package es.jnsoft.movieme.data.network.model.movie
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import es.jnsoft.movieme.data.local.element.Element
+import es.jnsoft.movieme.data.network.model.common.Genre
 
 @JsonClass(generateAdapter = true)
 data class Movie(
@@ -35,13 +36,7 @@ data class Movie(
     val voteAverage: Double? = 0.0,
     @Json(name = "vote_count")
     val voteCount: Int? = 0
-) {
-    @JsonClass(generateAdapter = true)
-    data class Genre(
-        val id: Int,
-        val name: String
-    )
-}
+)
 
 fun Movie.toElement(): Element {
     return Element(
