@@ -4,12 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.transition.TransitionInflater
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import es.jnsoft.movieme.data.Result
 import es.jnsoft.movieme.databinding.FragmentMovieBinding
@@ -46,14 +43,14 @@ class MovieFragment : BaseDetailFragment() {
         })
 
         viewModel.isElementInDb.observe(viewLifecycleOwner, { isSaved ->
-            binding.elementFab.setIcon(isSaved)
+            binding.movieFab.setIcon(isSaved)
         })
 
         viewModel.showFab.observe(viewLifecycleOwner, { showFab ->
             if (showFab) {
-                binding.elementFab.visibility = View.VISIBLE
+                binding.movieFab.visibility = View.VISIBLE
             } else {
-                binding.elementFab.visibility = View.GONE
+                binding.movieFab.visibility = View.GONE
             }
         })
 
@@ -68,11 +65,11 @@ class MovieFragment : BaseDetailFragment() {
 
     override fun setupBindings() {
         binding.apply {
-            elementPoster.transitionName = args.element.poster
-            elementBackIcon.setOnClickListener {
+            moviePoster.transitionName = args.element.poster
+            movieBackIcon.setOnClickListener {
                 findNavController().popBackStack()
             }
-            elementFab.setOnClickListener {
+            movieFab.setOnClickListener {
                 viewModel?.onFabClick()
             }
         }

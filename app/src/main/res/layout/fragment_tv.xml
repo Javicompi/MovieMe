@@ -22,7 +22,7 @@
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutDescription="@xml/fragment_element_scene">
+        app:layoutDescription="@xml/fragment_movie_scene">
 
         <ImageView
             android:layout_width="0dp"

@@ -58,5 +58,9 @@ class TvFragment : BaseDetailFragment() {
 
     override fun setupBindings() {
         TODO("Not yet implemented")
+        binding.apply {
+            elementBackdrop.transitionName = args.element.poster
+
+        }
     }
 }
