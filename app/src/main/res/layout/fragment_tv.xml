@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="element"
-            type="es.jnsoft.movieme.data.local.element.Element" />
-
-        <variable
             name="tv"
             type="es.jnsoft.movieme.data.network.model.tv.Tv" />
 
@@ -27,14 +23,73 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="@dimen/fragment_element_backdrop_height"
-            android:id="@+id/element_backdrop"
+            android:id="@+id/tv_backdrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:scaleType="centerCrop"
-            android:imageUrl="@{element.backdrop}"
+            android:imageUrl="@{tv.backdropPath}"
             android:background="@color/design_default_color_primary"
             tools:src="@drawable/backdrop" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_back_icon"
+            android:padding="@dimen/fragment_element_arrow_padding"
+            android:src="@drawable/ic_arrow"
+            app:tint="?android:attr/textColorPrimaryInverse"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tv_backdrop"
+            android:layout_marginStart="@dimen/fragment_element_title_margin"
+            android:layout_marginBottom="@dimen/fragment_element_title_margin"
+            android:textColor="?android:attr/textColorPrimaryInverse"
+            android:textSize="@dimen/fragment_element_title_size"
+            android:text="@{tv.name}"
+            android:maxLines="1"
+            tools:text="Ejército de los muertos" />
+
+        <!-- TODO ConstraintLayout here -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/search_item_imageview_width"
+            android:layout_height="@dimen/search_item_imageview_height"
+            android:id="@+id/tv_cardview"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="@dimen/fragment_element_cardview_margin"
+            app:layout_constraintVertical_bias="0.45"
+            app:cardCornerRadius="@dimen/search_item_corner_radius"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tv_poster"
+                android:scaleType="centerCrop"
+                android:imageUrl="@{tv.posterPath}"
+                tools:src="@drawable/poster" />
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_fab"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="@dimen/fragment_element_fab_margin"
+            android:visibility="gone"
+            tools:visibility="visible"/>
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
