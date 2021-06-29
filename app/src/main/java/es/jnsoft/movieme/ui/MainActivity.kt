@@ -49,6 +49,10 @@ class MainActivity : AppCompatActivity() {
                     actionBar.hide()
                     navigationView.visibility = View.GONE
                 }
+                R.id.navigation_tv -> {
+                    actionBar.hide()
+                    navigationView.visibility = View.GONE
+                }
                 else -> {
                     actionBar.show()
                     navigationView.visibility = View.VISIBLE
