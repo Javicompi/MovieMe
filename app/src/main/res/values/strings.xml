@@ -27,6 +27,7 @@
     <string name="details_container_genres">Genre/s:</string>
     <string name="details_container_website">Website:</string>
     <string name="details_container_overview">Overview:</string>
+    <string name="details_container_creators">Creator/s:</string>
     <string name="details_container_overview_mock">Un grupo de mercenarios decide llevar a cabo el mayor atraco que jamás se haya realizado en la ciudad de Las Vegas justo después de que se produzca una epidemia de muertos vivientes. Para ello tendrán que adentrarse en una zona de cuarentena, con los riesgos que ello conlleva.</string>
 
 </resources>
