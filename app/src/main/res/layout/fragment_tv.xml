@@ -56,7 +56,135 @@
             android:maxLines="1"
             tools:text="Ejército de los muertos" />
 
-        <!-- TODO ConstraintLayout here -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/tv_bottom_container"
+            android:padding="@dimen/details_container_padding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_backdrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="?android:colorBackground">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_container_guideline"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.25" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_details_title_tv"
+                app:layout_constraintEnd_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/details_container_or_title"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="@dimen/details_container_genre_tv_size"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_details_title"
+                app:layout_constraintStart_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/details_container_text_width"
+                android:text="@{tv.originalName}"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                tools:text="Army of the Dead"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_details_release_tv"
+                app:layout_constraintEnd_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_title"
+                android:layout_marginTop="@dimen/details_container_text_width"
+                android:text="@string/details_container_release"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_details_release"
+                app:layout_constraintStart_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toTopOf="@id/tv_details_release_tv"
+                android:layout_marginStart="@dimen/details_container_text_width"
+                android:text="@{tv.firstAirDate}"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                tools:text="2021-05-14"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_details_language_tv"
+                app:layout_constraintEnd_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_release"
+                android:layout_marginTop="@dimen/details_container_text_width"
+                android:text="@string/details_container_language"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_details_language"
+                app:layout_constraintStart_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toTopOf="@id/tv_details_language_tv"
+                android:layout_marginStart="@dimen/details_container_text_width"
+                android:text="@{tv.originalLanguage}"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                tools:text="en"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_details_creators_tv"
+                app:layout_constraintEnd_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_language"
+                android:layout_marginTop="@dimen/details_container_text_width"
+                android:text="@string/details_container_creators"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="@dimen/details_container_genre_tv_size"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_details_creators"
+                app:layout_constraintStart_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toTopOf="@id/tv_details_creators_tv"
+                android:layout_marginStart="@dimen/details_container_text_width"
+                android:creators="@{tv.createdBys}"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                tools:text="Scott Frank, Allan Scott"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_details_genres_tv"
+                app:layout_constraintEnd_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_creators"
+                android:layout_marginTop="@dimen/details_container_text_width"
+                android:text="@string/details_container_genres"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="@dimen/details_container_genre_tv_size"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_details_genres"
+                app:layout_constraintStart_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toTopOf="@id/tv_details_genres_tv"
+                android:layout_marginStart="@dimen/details_container_text_width"
+                android:genres="@{tv.genres}"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:maxLines="3"
+                tools:text="Acción, crimen, ciencia ficción"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.cardview.widget.CardView
             android:layout_width="@dimen/search_item_imageview_width"
