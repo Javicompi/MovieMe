@@ -26,7 +26,7 @@ class MovieViewModel @Inject constructor(
 
     val isElementInDb = elementId.switchMap { id ->
         liveData {
-            emitSource(repository.isElementSaved(id))
+            emitSource(repository.isElementSaved("movie$id"))
         }
     }
 

@@ -16,12 +16,6 @@ class TvViewModel @Inject constructor(
 
     val elementId = MutableLiveData<Long>()
 
-    val element = elementId.switchMap { id ->
-        liveData {
-            emitSource(repository.getElement("tv$id"))
-        }
-    }
-
     val tv = elementId.switchMap { id ->
         liveData {
             id?.let {
@@ -30,9 +24,9 @@ class TvViewModel @Inject constructor(
         }
     }
 
-    val isElementInDb = element.switchMap { data ->
+    val isElementInDb = elementId.switchMap { id ->
         liveData {
-            emit(data != null && data.movieDbId > 0L)
+            emitSource(repository.isElementSaved("tv$id"))
         }
     }
 
