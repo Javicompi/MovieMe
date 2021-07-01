@@ -159,7 +159,6 @@
                 android:layout_marginStart="@dimen/details_container_text_width"
                 android:genres="@{movie.genres}"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:maxLines="3"
                 tools:text="Acción, crimen, ciencia ficción"/>
 
             <TextView
