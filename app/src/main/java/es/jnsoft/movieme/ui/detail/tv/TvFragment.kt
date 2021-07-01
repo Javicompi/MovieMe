@@ -28,7 +28,8 @@ class TvFragment : BaseDetailFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTvBinding.inflate(inflater)
-        binding.lifecycleOwner = this
+
+        setupBindings()
 
         viewModel.tv.observe(viewLifecycleOwner, { result ->
             when (result) {
@@ -55,13 +56,13 @@ class TvFragment : BaseDetailFragment() {
 
         viewModel.elementId.value = args.element.movieDbId
 
-        setupBindings()
-
         return binding.root
     }
 
     override fun setupBindings() {
         binding.apply {
+            lifecycleOwner = this@TvFragment
+            viewModel = viewModel
             tvPoster.transitionName = args.element.poster
             tvBackIcon.setOnClickListener {
                 findNavController().popBackStack()

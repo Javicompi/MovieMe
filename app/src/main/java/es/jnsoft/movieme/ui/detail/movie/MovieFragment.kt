@@ -28,8 +28,8 @@ class MovieFragment : BaseDetailFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMovieBinding.inflate(inflater)
-        binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+
+        setupBindings()
 
         viewModel.movie.observe(viewLifecycleOwner, { result ->
             when (result) {
@@ -56,13 +56,13 @@ class MovieFragment : BaseDetailFragment() {
 
         viewModel.elementId.value = args.element.movieDbId
 
-        setupBindings()
-
         return binding.root
     }
 
     override fun setupBindings() {
         binding.apply {
+            lifecycleOwner = this@MovieFragment
+            viewModel = viewModel
             moviePoster.transitionName = args.element.poster
             movieBackIcon.setOnClickListener {
                 findNavController().popBackStack()
