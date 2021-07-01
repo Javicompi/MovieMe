@@ -9,46 +9,46 @@ import es.jnsoft.movieme.data.network.model.common.Genre
 @JsonClass(generateAdapter = true)
 data class Tv(
     @Json(name = "backdrop_path")
-    val backdropPath: String?,
+    val backdropPath: String? = "",
     @Json(name = "created_by")
-    val createdBys: List<CreatedBy>?,
+    val createdBys: List<CreatedBy>? = listOf(),
     @Json(name = "episode_run_time")
-    val episodeRunTime: List<Int>?,
+    val episodeRunTime: List<Int>? = listOf(),
     @Json(name = "first_air_date")
-    val firstAirDate: String?,
-    val genres: List<Genre>?,
-    val homepage: String?,
-    val id: Long,
+    val firstAirDate: String? = "",
+    val genres: List<Genre>? = listOf(),
+    val homepage: String? = "",
+    val id: Long = 0L,
     @Json(name = "in_production")
-    val inProduction: Boolean,
-    val languages: List<String>?,
+    val inProduction: Boolean? = false,
+    val languages: List<String>? = listOf(),
     @Json(name = "last_air_date")
-    val lastAirDate: String?,
-    val name: String?,
+    val lastAirDate: String? = "",
+    val name: String? = "",
     @Json(name = "number_of_episodes")
-    val numberOfEpisodes: Int?,
+    val numberOfEpisodes: Int? = 0,
     @Json(name = "number_of_seasons")
-    val numberOfSeasons: Int?,
+    val numberOfSeasons: Int? = 0,
     @Json(name = "origin_country")
-    val originCountry: List<String>?,
+    val originCountry: List<String>? = listOf(),
     @Json(name = "original_language")
-    val originalLanguage: String?,
+    val originalLanguage: String? = "",
     @Json(name = "original_name")
-    val originalName: String?,
-    val overview: String?,
-    val popularity: Double?,
+    val originalName: String? = "",
+    val overview: String? = "",
+    val popularity: Double? = 0.0,
     @Json(name = "poster_path")
-    val posterPath: String?,
-    val seasons: List<Season>?,
+    val posterPath: String? = "",
+    val seasons: List<Season>? = listOf(),
     @Json(name = "spoken_languages")
-    val spokenLanguages: List<SpokenLanguage>?,
-    val status: String?,
-    val tagline: String?,
-    val type: String?,
+    val spokenLanguages: List<SpokenLanguage>? = listOf(),
+    val status: String? = "",
+    val tagline: String? = "",
+    val type: String? = "",
     @Json(name = "vote_average")
-    val voteAverage: Double?,
+    val voteAverage: Double? = 0.0,
     @Json(name = "vote_count")
-    val voteCount: Int?
+    val voteCount: Int? = 0
 ) {
     @JsonClass(generateAdapter = true)
     data class CreatedBy(
