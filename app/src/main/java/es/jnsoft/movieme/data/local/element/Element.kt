@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import es.jnsoft.movieme.data.network.model.movie.Movie
+import es.jnsoft.movieme.data.network.model.tv.Tv
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -30,5 +31,17 @@ fun Element.toMovie(): Movie {
         posterPath = poster,
         releaseDate = releaseDate,
         title = title
+    )
+}
+
+fun Element.toTv(): Tv {
+    return Tv(
+        backdropPath = backdrop,
+        id = movieDbId,
+        originalLanguage = language,
+        overview = overview,
+        posterPath = poster,
+        firstAirDate = releaseDate,
+        name = title
     )
 }
