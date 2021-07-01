@@ -8,6 +8,7 @@ import androidx.paging.PagingConfig
 import es.jnsoft.movieme.data.local.LocalDataSourceImpl
 import es.jnsoft.movieme.data.local.element.Element
 import es.jnsoft.movieme.data.local.element.toMovie
+import es.jnsoft.movieme.data.local.element.toTv
 import es.jnsoft.movieme.data.network.NetworkDataSourceImpl
 import es.jnsoft.movieme.data.network.TrendingPagingSource
 import es.jnsoft.movieme.data.network.model.movie.Movie
@@ -79,12 +80,24 @@ class Repository @Inject constructor(
 
     suspend fun getTv(id: Long): LiveData<Result<Tv>> = withContext(Dispatchers.IO) {
         return@withContext liveData {
-            emit(networkDataSource.getTv(id))
+            val result = MediatorLiveData<Result<Tv>>()
+            val dbSource = localDataSource.getElement("tv$id")
+            val networkSource = networkDataSource.getTv(id)
+            result.addSource(dbSource) { data ->
+                result.removeSource(dbSource)
+                if (data != null && data.id.isNotEmpty()) {
+                    result.value = Result.Success(data.toTv())
+                }
+                if (networkSource.succeeded) {
+                    result.value = networkSource
+                }
+            }
+            emitSource(result)
         }
     }
 
-    suspend fun isElementSaved(id: Long): LiveData<Boolean> = withContext(Dispatchers.IO) {
-        return@withContext localDataSource.getElementId("movie$id")
+    suspend fun isElementSaved(id: String): LiveData<Boolean> = withContext(Dispatchers.IO) {
+        return@withContext localDataSource.getElementId(id)
     }
 
     suspend fun saveElement(element: Element) = withContext(Dispatchers.IO) {
