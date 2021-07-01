@@ -1,6 +1,7 @@
 package es.jnsoft.movieme.ui.detail.tv
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,8 +29,8 @@ class TvFragment : BaseDetailFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTvBinding.inflate(inflater)
-
-        setupBindings()
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
         viewModel.tv.observe(viewLifecycleOwner, { result ->
             when (result) {
@@ -56,18 +57,24 @@ class TvFragment : BaseDetailFragment() {
 
         viewModel.elementId.value = args.element.movieDbId
 
+        setupBindings()
+
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupBindings()
     }
 
     override fun setupBindings() {
         binding.apply {
-            lifecycleOwner = this@TvFragment
-            viewModel = viewModel
             tvPoster.transitionName = args.element.poster
             tvBackIcon.setOnClickListener {
                 findNavController().popBackStack()
             }
             tvFab.setOnClickListener {
+                Log.d("TvFragment", "Fab clicked!")
                 viewModel?.onFabClick()
             }
         }
