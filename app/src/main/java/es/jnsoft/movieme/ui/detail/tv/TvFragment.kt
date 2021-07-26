@@ -32,10 +32,14 @@ class TvFragment : BaseDetailFragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        val adapter = TvSeasonAdapter()
+        binding.detailsSeassonsRecyclerview.adapter = adapter
+
         viewModel.tv.observe(viewLifecycleOwner, { result ->
             when (result) {
                 is Result.Success -> {
                     binding.tv = result.value
+                    adapter.submitList(result.value.seasons)
                 }
                 is Result.Failure -> {
                     showSnackBar(result.message ?: "An error occurred")

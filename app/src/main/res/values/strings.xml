@@ -29,5 +29,11 @@
     <string name="details_container_overview">Overview:</string>
     <string name="details_container_creators">Creator/s:</string>
     <string name="details_container_overview_mock">Un grupo de mercenarios decide llevar a cabo el mayor atraco que jamás se haya realizado en la ciudad de Las Vegas justo después de que se produzca una epidemia de muertos vivientes. Para ello tendrán que adentrarse en una zona de cuarentena, con los riesgos que ello conlleva.</string>
+    <string name="details_container_seassons">Seasson/s:</string>
+
+    <!-- List item Seasson -->
+    <string name="list_item_seasson_release">Released %s</string>
+    <string name="list_item_seasson_episodes">%s episodes</string>
+    <string name="list_item_seasson_overview_mock">La huérfana de ocho años Beth Harmon es tranquila, huraña y, por lo que parece, poco llamativa. Eso es, hasta que juega su primera partida de ajedrez. Sus sentidos se agudizan, su pensamiento es más claro y por primera vez en su vida se siente totalmente en control. A los dieciséis años compite por el campeonato del Abierto de los Estados Unidos. Pero a medida que Beth perfecciona sus habilidades en el circuito profesional, las apuestas aumentan, su aislamiento se vuelve más aterrador y la idea de escapar se vuelve más tentadora.</string>
 
 </resources>

@@ -61,6 +61,7 @@
             android:layout_height="0dp"
             android:id="@+id/tv_bottom_container"
             android:padding="@dimen/details_container_padding"
+            android:clipToPadding="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_backdrop"
@@ -230,6 +231,30 @@
                 android:text="@{tv.overview}"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 tools:text="@string/details_container_overview_mock"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_details_seassons_tv"
+                app:layout_constraintEnd_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_overview"
+                android:layout_marginTop="@dimen/details_container_text_width"
+                android:text="@string/details_container_seassons"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textStyle="bold"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/details_seassons_recyclerview"
+                app:layout_constraintStart_toStartOf="@id/tv_container_guideline"
+                app:layout_constraintTop_toTopOf="@id/tv_details_seassons_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="@dimen/details_container_text_width"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:spanCount="1"
+                android:clipToPadding="false"
+                tools:listitem="@layout/list_item_seasson"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
