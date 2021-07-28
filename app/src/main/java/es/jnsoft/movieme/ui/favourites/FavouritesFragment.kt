@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import es.jnsoft.movieme.R
+import es.jnsoft.movieme.data.network.model.trend.TrendMediaType
 import es.jnsoft.movieme.databinding.FragmentFavouritesBinding
 
 @AndroidEntryPoint
@@ -32,9 +33,15 @@ class FavouritesFragment : Fragment() {
         binding.favouritesRecyclerview.layoutManager = GridLayoutManager(activity, columnCount)
         val adapter = FavouritesAdapter(FavouriteClickListener {element, poster ->
             val extras = FragmentNavigatorExtras(poster to element.poster)
-            val action = FavouritesFragmentDirections.actionFragmentFavouritesToFragmentMovie(
-                element = element
-            )
+            val action = if (element.mediaType == TrendMediaType.MOVIE.value) {
+                FavouritesFragmentDirections.actionFragmentFavouritesToFragmentMovie(
+                    element = element
+                )
+            } else {
+                FavouritesFragmentDirections.actionFragmentFavouritesToFragmentTv(
+                    element = element
+                )
+            }
             findNavController().navigate(action, extras)
         })
 
