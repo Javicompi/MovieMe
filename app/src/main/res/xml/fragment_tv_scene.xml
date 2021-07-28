@@ -7,7 +7,7 @@
         app:constraintSetEnd="@+id/tv_scene_end" >
 
         <OnSwipe
-            app:touchAnchorId="@id/tv_bottom_container"
+            app:touchAnchorId="@id/tv_nested_scrollview"
             app:touchAnchorSide="top"
             app:dragDirection="dragUp" />
 

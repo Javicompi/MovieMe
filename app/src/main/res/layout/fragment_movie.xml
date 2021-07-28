@@ -56,160 +56,167 @@
             android:maxLines="1"
             tools:text="Ejército de los muertos" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/movie_bottom_container"
-            android:padding="@dimen/details_container_padding"
+            android:id="@+id/movie_nested_scrollview"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/movie_backdrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="?android:colorBackground">
+            app:layout_constraintBottom_toBottomOf="parent">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_container_guideline"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.25" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/movie_bottom_container"
+                android:padding="@dimen/details_container_padding"
+                android:background="?android:colorBackground">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_title_tv"
-                app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="@string/details_container_or_title"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textStyle="bold" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_container_guideline"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
 
-            <TextView
-                android:layout_width="@dimen/details_container_genre_tv_size"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_title"
-                app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="@dimen/details_container_text_width"
-                android:text="@{movie.originalTitle}"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                tools:text="Army of the Dead"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_title_tv"
+                    app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/details_container_or_title"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_release_tv"
-                app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toBottomOf="@id/movie_details_title"
-                android:layout_marginTop="@dimen/details_container_text_width"
-                android:text="@string/details_container_release"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="@dimen/details_container_genre_tv_size"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_title"
+                    app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginStart="@dimen/details_container_text_width"
+                    android:text="@{movie.originalTitle}"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    tools:text="Army of the Dead"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_release"
-                app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toTopOf="@id/movie_details_release_tv"
-                android:layout_marginStart="@dimen/details_container_text_width"
-                android:text="@{movie.releaseDate}"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                tools:text="2021-05-14"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_release_tv"
+                    app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/movie_details_title"
+                    android:layout_marginTop="@dimen/details_container_text_width"
+                    android:text="@string/details_container_release"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_language_tv"
-                app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toBottomOf="@id/movie_details_release"
-                android:layout_marginTop="@dimen/details_container_text_width"
-                android:text="@string/details_container_language"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_release"
+                    app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toTopOf="@id/movie_details_release_tv"
+                    android:layout_marginStart="@dimen/details_container_text_width"
+                    android:text="@{movie.releaseDate}"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    tools:text="2021-05-14"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_language"
-                app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toTopOf="@id/movie_details_language_tv"
-                android:layout_marginStart="@dimen/details_container_text_width"
-                android:text="@{movie.originalLanguage}"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                tools:text="en"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_language_tv"
+                    app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/movie_details_release"
+                    android:layout_marginTop="@dimen/details_container_text_width"
+                    android:text="@string/details_container_language"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_genres_tv"
-                app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toBottomOf="@id/movie_details_language"
-                android:layout_marginTop="@dimen/details_container_text_width"
-                android:text="@string/details_container_genres"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_language"
+                    app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toTopOf="@id/movie_details_language_tv"
+                    android:layout_marginStart="@dimen/details_container_text_width"
+                    android:text="@{movie.originalLanguage}"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    tools:text="en"/>
 
-            <TextView
-                android:layout_width="@dimen/details_container_genre_tv_size"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_genres"
-                app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toTopOf="@id/movie_details_genres_tv"
-                android:layout_marginStart="@dimen/details_container_text_width"
-                android:genres="@{movie.genres}"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                tools:text="Acción, crimen, ciencia ficción"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_genres_tv"
+                    app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/movie_details_language"
+                    android:layout_marginTop="@dimen/details_container_text_width"
+                    android:text="@string/details_container_genres"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textStyle="bold"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_website_tv"
-                app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toBottomOf="@id/movie_details_genres"
-                android:layout_marginTop="@dimen/details_container_text_width"
-                android:text="@string/details_container_website"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="@dimen/details_container_genre_tv_size"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_genres"
+                    app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toTopOf="@id/movie_details_genres_tv"
+                    android:layout_marginStart="@dimen/details_container_text_width"
+                    android:genres="@{movie.genres}"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    tools:text="Acción, crimen, ciencia ficción"/>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_website"
-                app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toTopOf="@id/movie_details_website_tv"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="@dimen/details_container_text_width"
-                android:text="@{movie.homepage}"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:autoLink="web"
-                android:clickable="true"
-                tools:text="https://www.netflix.com/title/81046394"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_website_tv"
+                    app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/movie_details_genres"
+                    android:layout_marginTop="@dimen/details_container_text_width"
+                    android:text="@string/details_container_website"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textStyle="bold"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_overview_tv"
-                app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toBottomOf="@id/movie_details_website"
-                android:layout_marginTop="@dimen/details_container_text_width"
-                android:text="@string/details_container_overview"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_website"
+                    app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toTopOf="@id/movie_details_website_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/details_container_text_width"
+                    android:text="@{movie.homepage}"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:autoLink="web"
+                    android:clickable="true"
+                    tools:text="https://www.netflix.com/title/81046394"/>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/movie_details_overview"
-                app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
-                app:layout_constraintTop_toTopOf="@id/movie_details_overview_tv"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="@dimen/details_container_text_width"
-                android:text="@{movie.overview}"
-                style="@style/TextAppearance.MaterialComponents.Subtitle1"
-                tools:text="@string/details_container_overview_mock"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_overview_tv"
+                    app:layout_constraintEnd_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toBottomOf="@id/movie_details_website"
+                    android:layout_marginTop="@dimen/details_container_text_width"
+                    android:text="@string/details_container_overview"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:textStyle="bold"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/movie_details_overview"
+                    app:layout_constraintStart_toStartOf="@id/movie_container_guideline"
+                    app:layout_constraintTop_toTopOf="@id/movie_details_overview_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/details_container_text_width"
+                    android:text="@{movie.overview}"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    tools:text="@string/details_container_overview_mock"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="@dimen/search_item_imageview_width"
